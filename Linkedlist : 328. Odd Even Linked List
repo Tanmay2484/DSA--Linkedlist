@@ -1,0 +1,19 @@
+/* 328. Odd Even Linked List
+  Link : https://leetcode.com/problems/odd-even-linked-list/
+*/
+ListNode* oddEvenList(ListNode* head) {
+        if(!head or !head->next) return head;
+        ListNode * odd=new ListNode();
+        ListNode * even=new ListNode();
+        auto prev1=odd,prev2=even;
+        int i=0;
+        while(head){
+            if(i%2==0) prev1->next=head , prev1=head;
+            else prev2->next=head , prev2=head;
+            head=head->next;
+            i++;
+        }
+        prev2->next=NULL;
+        prev1->next=even->next;
+        return odd->next;
+    }
