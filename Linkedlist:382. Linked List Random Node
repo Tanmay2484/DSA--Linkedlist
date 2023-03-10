@@ -1,0 +1,38 @@
+/**
+ /* 382. Linked List Random Node
+   Link: https://leetcode.com/problems/linked-list-random-node/description/
+ */
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *headPtr;
+    int c = 0;
+    Solution(ListNode* head) {
+        headPtr = head;
+        ListNode *ptr = head;
+        while(ptr != NULL)
+        {
+            c++;
+            ptr = ptr->next;
+        }
+    }
+    
+    int getRandom() {
+        
+        ListNode *ptr2 = headPtr;
+        int randomNber = (1 + rand()%(c));
+        for(int i=1;i<randomNber;i++)
+        {
+            ptr2 = ptr2->next;
+        }
+        return ptr2->val;
+    }
+};
