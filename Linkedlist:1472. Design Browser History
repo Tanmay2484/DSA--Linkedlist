@@ -1,0 +1,26 @@
+/* 1472. Design Browser History
+   Link: https://leetcode.com/problems/design-browser-history/description/
+*/
+class BrowserHistory {
+public:
+  vector<string> v;
+  int id; 
+  
+  BrowserHistory(string homepage) {
+    id = 0;
+    v.push_back(homepage);
+  }
+    
+  void visit(string url) {
+    v.resize(++id);
+    v.push_back(url);
+  }
+    
+  string back(int steps) {
+    return v[id = max(0, id - steps)];
+  }
+    
+  string forward(int steps) {
+    return v[id = min( int(v.size() - 1), id + steps)];
+  }
+};
